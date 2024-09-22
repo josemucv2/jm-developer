@@ -1,0 +1,45 @@
+@import "../../../assets/styles/fonts";
+
+.bold {
+  font-weight: $font-weight-bold;
+}
+
+.semibold {
+  font-weight: $font-weight-semibold;
+}
+
+.normal {
+  font-weight: $font-weight-normal;
+}
+
+.extra-large {
+  font-size: $font-extra-large;
+}
+
+.medium-large {
+  font-size: $font-medium-large;
+}
+
+.large {
+  font-size: $font-large;
+}
+
+.medium {
+  font-size: $font-medium;
+}
+
+.small {
+  font-size: $font-small;
+}
+
+.extra-small {
+  font-size: $font-extra-small;
+}
+
+.family-primary {
+  font-family: $font-primary;
+}
+
+.family-titles {
+  font-family: $font-titles;
+}
