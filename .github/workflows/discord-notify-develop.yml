@@ -15,11 +15,9 @@ jobs:
 
       - name: Send notification to Discord
         run: |
-          BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/})
-          AUTHOR=$(git log -1 --pretty=format:'%an')
           COMMIT_MESSAGE=$(git log -1 --pretty=%B)
-          COMMIT_URL="https://github.com/${GITHUB_REPOSITORY}/commit/${GITHUB_SHA}"
+          COMMIT_URL="https://github.com/${{ github.repository }}/commit/${{ github.sha }}"
 
           curl -H "Content-Type: application/json" \
-          -d "{\"content\": \"🚀 **New push to ${BRANCH_NAME}** in **${GITHUB_REPOSITORY}**\n\n👤 Author: ${AUTHOR}\n\n💬 Commit Message: ${COMMIT_MESSAGE}\n\n🔗 [View Commit](${COMMIT_URL})\"}" \
+          -d "{\"content\": \"🚀 **New push to DEVELOP** in **${{ github.repository }}**\n\n👤 Author: ${{github.actor}}\n\n \
           ${{ secrets.DISCORD_WEBHOOK_URL }}
