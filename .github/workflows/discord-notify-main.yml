@@ -1,4 +1,4 @@
-name: New Merged in Bariven System - DEVELOP
+name: New Merged in Bariven System - Main
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
       - closed
   push:
     branches:
-      - develop
+      - main
 
 jobs:
   notify-discord:
