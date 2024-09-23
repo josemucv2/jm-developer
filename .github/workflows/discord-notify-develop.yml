@@ -7,9 +7,6 @@ on:
   push:
     branches:
       - develop
-env:
-  AMBIENT: develop
-  NAME_PROJECT: Sistema Bariven
 
 jobs:
   notify-discord:
@@ -21,16 +18,11 @@ jobs:
 
       - name: Send notification to Discord
         run: |
-          echo "
-            AMBIENT=${AMBIENT}
-            NAME_PROJECT=${NAME_PROJECT}
-          " >> .env
           curl -H "Content-Type: application/json" \
           -d "{\"content\": 
             \"🚀 **New push to DEVELOP** in **${{ github.repository }}** 🫴\n\n
             👤Author: ${{ github.actor }} \n\n
               Job: ${{github.job }} \n\n
               Repository: ${{github.repositoryUrl}} 
-              Name Project: ${NAME_PROJECT}
               \"}" \
           ${{ secrets.DISCORD_WEBHOOK_URL }}
