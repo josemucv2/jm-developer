@@ -1,12 +1,11 @@
-name: New Merged in Bariven System - Main
+name:  Jose Martinez Portfolio - Main
 
 on:
   pull_request:
     types:
       - closed
-  push:
     branches:
-      - main
+      - develop
 
 jobs:
   notify-discord:
@@ -19,5 +18,5 @@ jobs:
       - name: Send notification to Discord
         run: |
           curl -H "Content-Type: application/json" \
-          -d "{\"content\": \"🚀 **New push to PRODUCTION** in **${{ github.repository }}** 🫴\n\n 👤 Author: **${{ github.actor }}** \n\n 👨🏼‍🚒 Job: **${{ github.job }}** \n\n 📂 Repository: **${{ github.repositoryUrl }}** \n\n 💡 Name Project: **Portfolio Jose Martinez**\n\n 🚨⚠🚨⚠🚨⚠ AMBIENT: **PRODUCTION**\"}" \
+          -d "{\"content\": \"###################################\n\n 🚀 **New push to PRODUCTION** in **${{ github.repository }}** 🫴\n\n 👤 Author: **${{ github.actor }}** \n\n 👨🏼‍🚒 Job: **${{ github.job }}** \n\n 📂 Repository: **${{ github.repositoryUrl }}** \n\n 💡 Name Project: **Portfolio Jose Martinez**\n\n 🚨⚠🚨⚠🚨⚠ AMBIENT: **PRODUCTION**\"}" \
           ${{ secrets.DISCORD_WEBHOOK_URL }}
