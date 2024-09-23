@@ -19,10 +19,5 @@ jobs:
       - name: Send notification to Discord
         run: |
           curl -H "Content-Type: application/json" \
-          -d "{\"content\": 
-            \"🚀 **New push to DEVELOP** in **${{ github.repository }}** 🫴\n\n
-            👤Author: ${{ github.actor }} \n\n
-              Job: ${{github.job }} \n\n
-              Repository: ${{github.repositoryUrl}} 
-              \"}" \
+          -d "{\"content\": \"🚀 **New push to DEVELOP** in **${{ github.repository }}** 🫴\n\n 👤Author: ${{ github.actor }} \n\n Job: ${{ github.job }} \n\n Repository: ${{ github.repositoryUrl}} \"}" \
           ${{ secrets.DISCORD_WEBHOOK_URL }}
