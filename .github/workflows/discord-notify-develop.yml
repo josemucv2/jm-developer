@@ -1,9 +1,14 @@
-name: Notify Discord on push to main or develop
+name: New Merged in Bariven System - DEVELOP
 
 on:
-  push:
+  pull_request:
+    types:
+      - closed
     branches:
       - develop
+env:
+  AMBIENT: develop
+  NAME_PROJECT: Sistema Bariven
 
 jobs:
   notify-discord:
@@ -15,6 +20,16 @@ jobs:
 
       - name: Send notification to Discord
         run: |
+          echo "
+            AMBIENT=${AMBIENT}
+            NAME_PROJECT=${NAME_PROJECT}
+          " >> .env
           curl -H "Content-Type: application/json" \
-          -d "{\"content\": \"🚀 **New push to DEVELOP** in **${{ github.repository }}** 🫴\n\n👤 Author: ${{ github.actor }}\"}" \
+          -d "{\"content\": 
+            \"🚀 **New push to DEVELOP** in **${{ github.repository }}** 🫴\n\n
+            👤Author: ${{ github.actor }} \n\n
+              Job: ${{github.job }} \n\n
+              Repository: ${{github.repositoryUrl}} 
+              Name Project: ${NAME_PROJECT}
+              \"}" \
           ${{ secrets.DISCORD_WEBHOOK_URL }}
