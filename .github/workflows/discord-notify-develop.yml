@@ -1,0 +1,17 @@
+name: Notify Discord on push to main or develop
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  notify-discord:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send notification to Discord
+        run: |
+          curl -H "Content-Type: application/json" \
+          -d '{"content": "A push was made to the branch $GITHUB_REF in the repository $GITHUB_REPOSITORY"}' \
+          ${{ secrets.DISCORD_WEBHOOK_URL }}
